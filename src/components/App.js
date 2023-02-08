@@ -221,9 +221,9 @@ const states = [
 ];
 
 function App() {
-  const [stateSelected, setStateSelected] = useState("");
-  const [citySelected, setCitySelected] = useState("");
-  const [landmarkSelected, setLandmarkSelected] = useState("");
+  const [stateSelected, setStateSelected] = useState(0);
+  const [citySelected, setCitySelected] = useState(0);
+  const [landmarkSelected, setLandmarkSelected] = useState(0);
 
   const handleStateChange = (event) => {
     setStateSelected(event.target.value);
@@ -241,9 +241,9 @@ function App() {
   return (
     <div id="main">
       <select name="state" id="state" onChange={handleStateChange}>
-        {states.map((stateObj) => {
+        {states.map((stateObj, idx) => {
           return (
-            <option value={stateObj.name} key={uniqid()}>
+            <option value={idx} key={uniqid()}>
               {stateObj.name}
             </option>
           );
@@ -251,33 +251,79 @@ function App() {
       </select>
 
       <select name="city" id="city" onChange={handleCityChange}>
-        {states.map((stateObj) => {
-          if (stateObj.name === stateSelected)
-            return stateObj.city.map((cityObj) => {
-              return (
-                <option value={cityObj.name} key={uniqid()}>
-                  {cityObj.name}
-                </option>
-              );
-            });
+        {states[stateSelected]?.city.map((cityObj, idx) => {
+          return (
+            <option value={idx} key={uniqid()}>
+              {cityObj.name}
+            </option>
+          );
         })}
       </select>
 
       <select name="landmark" id="landmark" onChange={handleLandmarkChange}>
-        {states.map((stateObj) => {
-          if (stateObj.name === stateSelected)
-            return stateObj.city.map((cityObj) => {
-              if (cityObj.name === citySelected)
-                return cityObj.landmarks.map((landmarkObj) => {
-                  return (
-                    <option value={landmarkObj.name} key={uniqid()}>
-                      {landmarkObj.name}
-                    </option>
-                  );
-                });
-            });
-        })}
+        {states[stateSelected]?.city[citySelected]?.landmarks.map(
+          (landmarkObj, idx) => {
+            return (
+              <option value={idx} key={uniqid()}>
+                {landmarkObj.name}
+              </option>
+            );
+          }
+        )}
       </select>
+      <hr />
+
+      <div>
+        <div> State Name : {states[stateSelected]?.name}</div>
+        <div>State Title : {states[stateSelected]?.name}</div>
+        <div> State Description : {states[stateSelected]?.description}</div>
+      </div>
+      <hr />
+
+      <div>
+        <div>
+          {" "}
+          City Name : {states[stateSelected]?.city[citySelected]?.name}
+        </div>
+        <div>
+          City Title : {states[stateSelected]?.city[citySelected]?.name}
+        </div>
+        <div>
+          {" "}
+          City Description :{" "}
+          {states[stateSelected]?.city[citySelected]?.description}
+        </div>
+      </div>
+      <hr />
+
+      <div>
+        <div>
+          {" "}
+          Landmark Name :{" "}
+          {
+            states[stateSelected]?.city[citySelected]?.landmarks[
+              landmarkSelected
+            ]?.name
+          }
+        </div>
+        <div>
+          Landmark Title :{" "}
+          {
+            states[stateSelected]?.city[citySelected]?.landmarks[
+              landmarkSelected
+            ]?.name
+          }
+        </div>
+        <div>
+          {" "}
+          Landmark Description :{" "}
+          {
+            states[stateSelected]?.city[citySelected]?.landmarks[
+              landmarkSelected
+            ]?.description
+          }
+        </div>
+      </div>
     </div>
   );
 }
