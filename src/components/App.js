@@ -274,21 +274,24 @@ function App() {
       <hr />
 
       <div>
-        <div> State Name : {states[stateSelected]?.name}</div>
-        <div>State Title : {states[stateSelected]?.name}</div>
-        <div> State Description : {states[stateSelected]?.description}</div>
+        <div id="state-name"> State Name : {states[stateSelected]?.name}</div>
+        <div id="state-title">State Title : {states[stateSelected]?.name}</div>
+        <div id="state-description">
+          {" "}
+          State Description : {states[stateSelected]?.description}
+        </div>
       </div>
       <hr />
 
       <div>
-        <div>
+        <div id="city-name">
           {" "}
           City Name : {states[stateSelected]?.city[citySelected]?.name}
         </div>
-        <div>
+        <div id="city-title">
           City Title : {states[stateSelected]?.city[citySelected]?.name}
         </div>
-        <div>
+        <div id="city-description">
           {" "}
           City Description :{" "}
           {states[stateSelected]?.city[citySelected]?.description}
@@ -297,7 +300,7 @@ function App() {
       <hr />
 
       <div>
-        <div>
+        <div id="landmark-name">
           {" "}
           Landmark Name :{" "}
           {
@@ -306,7 +309,7 @@ function App() {
             ]?.name
           }
         </div>
-        <div>
+        <div id="landmark-title">
           Landmark Title :{" "}
           {
             states[stateSelected]?.city[citySelected]?.landmarks[
@@ -314,7 +317,7 @@ function App() {
             ]?.name
           }
         </div>
-        <div>
+        <div id="landmark-description">
           {" "}
           Landmark Description :{" "}
           {
