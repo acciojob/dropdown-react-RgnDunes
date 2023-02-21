@@ -240,7 +240,12 @@ function App() {
   // Do not alter/remove main div
   return (
     <div id="main">
-      <select name="state" id="state" onChange={handleStateChange}>
+      <select
+        name="state"
+        id="#state"
+        htmlFor="#state"
+        onChange={handleStateChange}
+      >
         {states.map((stateObj, idx) => {
           return (
             <option value={idx} key={uniqid()}>
@@ -250,7 +255,12 @@ function App() {
         })}
       </select>
 
-      <select name="city" id="city" onChange={handleCityChange}>
+      <select
+        name="city"
+        id="#city"
+        htmlFor="#city"
+        onChange={handleCityChange}
+      >
         {states[stateSelected]?.city.map((cityObj, idx) => {
           return (
             <option value={idx} key={uniqid()}>
@@ -260,7 +270,12 @@ function App() {
         })}
       </select>
 
-      <select name="landmark" id="landmark" onChange={handleLandmarkChange}>
+      <select
+        name="landmark"
+        id="#landmark"
+        htmlFor="#landmark"
+        onChange={handleLandmarkChange}
+      >
         {states[stateSelected]?.city[citySelected]?.landmarks.map(
           (landmarkObj, idx) => {
             return (
@@ -274,9 +289,9 @@ function App() {
       <hr />
 
       <div>
-        <div id="state-name"> State Name : {states[stateSelected]?.name}</div>
-        <div id="state-title">State Title : {states[stateSelected]?.name}</div>
-        <div id="state-description">
+        <div id="#state-name"> State Name : {states[stateSelected]?.name}</div>
+        <div id="#state-title">State Title : {states[stateSelected]?.name}</div>
+        <div id="#state-description">
           {" "}
           State Description : {states[stateSelected]?.description}
         </div>
@@ -284,14 +299,14 @@ function App() {
       <hr />
 
       <div>
-        <div id="city-name">
+        <div id="#city-name">
           {" "}
           City Name : {states[stateSelected]?.city[citySelected]?.name}
         </div>
-        <div id="city-title">
+        <div id="#city-title">
           City Title : {states[stateSelected]?.city[citySelected]?.name}
         </div>
-        <div id="city-description">
+        <div id="#city-description">
           {" "}
           City Description :{" "}
           {states[stateSelected]?.city[citySelected]?.description}
